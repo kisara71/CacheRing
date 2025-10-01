@@ -1,4 +1,4 @@
-package store
+package types
 
 import (
 	"sync/atomic"
@@ -18,6 +18,9 @@ type Entry struct {
 	Type     TYPE
 	ExpireAt *time.Time
 	Valid    atomic.Bool
+}
+type elem struct {
+	entry atomic.Pointer[Entry]
 }
 
 func (e *Entry) IsExpired() bool {
